@@ -49,7 +49,7 @@ def create_cities_dataframe(cities=None):
     longitudes = []
     # loop through the cities list and get the latitudes and longitudes
     for city in cities:
-        geolocator = geopy.geocoders.Nominatim(user_agent="tsp_pandas")
+        geolocator = geopy.geocoders.Nominatim(user_agent="tsp_pandas", timeout=10)
         location = geolocator.geocode(city)
         latitudes.append(location.latitude)
         longitudes.append(location.longitude)

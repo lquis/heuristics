@@ -55,7 +55,7 @@ def tsp_pandas(df):
     # randomly select a starting city
     start_city = random.choice(df["city"])
     # add the starting city to the shortest path dataframe
-    df_shortest = df_shortest.append(df[df["city"] == start_city])
+    df_shortest = pd.concat([df_shortest, df[df["city"] == start_city]])
     # remove the starting city from the original dataframe
     df = df[df["city"] != start_city]
     # loop through the original dataframe until it is empty
@@ -71,7 +71,7 @@ def tsp_pandas(df):
         # find the index of the city in the original dataframe that is closest to the last city in the shortest path
         closest_city_index = distances.index(min(distances))
         # add the closest city to the shortest path dataframe
-        df_shortest = df_shortest.append(df.iloc[closest_city_index])
+        df_shortest = pd.concat([df_shortest, df.iloc[[closest_city_index]]])
         # remove the closest city from the original dataframe
         df = df.drop(df.index[closest_city_index])
     # calculate the total distance of the shortest path
