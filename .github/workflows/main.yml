@@ -13,4 +13,3 @@ jobs:
           make lint
           make test
           make format
-      devcontainerPath: .devcontainer/devcontainer.json
